@@ -9,13 +9,7 @@
 (set-frame-font "Cascadia Mono 10" nil t)
 
 (setq scroll_margin 10)
-(setq treesit-extra-load-path '("~/.emacs.d/tree-sitter"))
-
-(add-to-list 'major-mode-remap-alist '(csharp-mode . csharp-ts-mode))
-(add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
-(add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
-(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
-(add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode)) 
+(setq treesit-extra-load-path '("~/.emacs.d/tree-sitter")) 
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
