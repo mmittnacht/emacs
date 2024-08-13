@@ -9,7 +9,15 @@
 (set-frame-font "Cascadia Mono 10" nil t)
 
 (setq scroll_margin 10)
-(setq treesit-extra-load-path '("~/.emacs.d/tree-sitter")) 
+
+;; Tree sitter
+(setq treesit-extra-load-path '("~/.emacs.d/tree-sitter"))
+
+(add-to-list 'major-mode-remap-alist '(csharp-mode . csharp-ts-mode))
+(add-to-list 'major-mode-remap-alist '(c++-mode . c++-ts-mode))
+(add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode))
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+(add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode)) 
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -33,10 +41,6 @@
 
 (use-package all-the-icons
   :ensure t)
-
-(use-package treesit-auto
-  :config
-  (global-treesit-auto-mode))
 
 (use-package projectile
   :ensure t
