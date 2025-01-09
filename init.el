@@ -83,7 +83,8 @@
 (use-package eglot
   :hook (prog-mode . eglot-ensure)
   :bind
-  ("C-x r" . eglot-format))
+  ("C-x q" . eglot-format)
+  ("C-x r" . eglot-rename))
 
 (use-package flycheck
   :ensure t
@@ -105,7 +106,7 @@
   :ensure t
   :config
   (setq helm-move-to-line-cycle-in-source nil)
-  (helm-autoresize-mode 1)
+  (setq helm-autoresize-mode 1)
   (setq helm-autoresize-max-height 30)
   (setq helm-autoresize-min-height 30)
   :bind
@@ -128,6 +129,7 @@
   
 
 (keymap-global-set "C-x 2" 'split-window-right)
+(keymap-global-set "C-x -" 'eval-buffer)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
