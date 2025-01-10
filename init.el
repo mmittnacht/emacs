@@ -50,6 +50,11 @@
   :config
   (add-hook 'dired-mode-hook #'all-the-icons-dired-mode))
 
+(use-package telephone-line
+  :ensure t
+  :config
+  (telephone-line-mode 1))
+
 (use-package projectile
   :ensure t
   :config
@@ -100,7 +105,7 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook #'global-company-mode))
+  (global-company-mode 1))
 
 (use-package helm
   :ensure t
@@ -137,7 +142,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(helm-rg helm-projectile helm-flycheck rg all-the-icons-dired magit elixir-ts-mode elixir-mode treesit-auto which-key solarized-theme projectile page-break-lines dashboard all-the-icons)))
+   '(telephone-line helm-rg helm-projectile helm-flycheck rg all-the-icons-dired magit elixir-ts-mode elixir-mode treesit-auto which-key solarized-theme projectile page-break-lines dashboard all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
