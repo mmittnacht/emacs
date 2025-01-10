@@ -7,7 +7,6 @@
 (add-to-list 'exec-path "/opt/homebrew/bin")
 (add-to-list 'exec-path "~/.asdf/shims")
 
-
 (setq mac-command-modifier 'meta)
 
 (setq ring-bell-function 'ignore)
@@ -102,10 +101,25 @@
   :config
   (global-flycheck-eglot-mode 1))
 
-(use-package company
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode)
+  :config
+  (setq corfu-cycle t))
+
+(use-package cape
+  :ensure t
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
+
+(use-package orderless
   :ensure t
   :config
-  (global-company-mode 1))
+  (setq completion-styles '(orderless flex)
+        completion-category-overrides '((eglot (styles . (orderless flex))))))
 
 (use-package helm
   :ensure t
@@ -130,7 +144,14 @@
   :ensure t
   :config
   (eval-after-load 'flycheck
-  '(define-key flycheck-mode-map (kbd "C-c j") 'helm-flycheck)))
+    '(define-key flycheck-mode-map (kbd "C-c j") 'helm-flycheck)))
+
+
+;; A few more useful configurations...
+(use-package emacs
+  :custom
+  (tab-always-indent 'complete)
+  (read-extended-command-predicate #'command-completion-default-include-p))
   
 
 (keymap-global-set "C-x 2" 'split-window-right)
